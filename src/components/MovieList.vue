@@ -1,19 +1,21 @@
 <template>
 	<div id="movie-container">
 		Movie List
-		<ul>
-			<li style="color:white" v-for="movies in movies" :key="movies.id">{{movies.name}}</li>
-		</ul>
+		<Movie v-for="movies in movies" :key="movies.id" :movie="movies"/>
 	</div>
 </template>
 
 <script>
+import Movie from './Movie'
 export default{
+	components: {
+		Movie
+	},
 	data(){
 		return {
-			// movies:[]
+			movies:[]
 		}
-	}, 
+	},
 	computed: {
 		// movies() {
 		// 	return this.$store.getters.getMovies
