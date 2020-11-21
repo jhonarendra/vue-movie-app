@@ -3,7 +3,7 @@
 		<div id="navbar">
 			<h2>Jhonarendra's Movie</h2>
 			<div>
-				<input type="text" placeholder="Cari">
+				<input v-model="search" type="text" placeholder="Cari">
 			</div>
 		</div>
 	</div>
@@ -11,7 +11,16 @@
 
 <script>
 	export default{
-
+		data(){
+			return{
+				search: ''
+			}
+		},
+		watch: {
+			search(){
+				this.$store.dispatch('search', this.search)
+			}
+		}
 	}
 </script>
 
