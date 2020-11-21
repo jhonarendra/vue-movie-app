@@ -9,5 +9,6 @@ export default createStore({
   actions: {
   },
   modules: {
+  	movies
   }
 })

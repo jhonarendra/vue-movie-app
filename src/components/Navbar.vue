@@ -1,7 +1,7 @@
 <template>
 	<div id="navbar-wrap" class="card-shadow">
 		<div id="navbar">
-			<h2>Jhonarendra Movie</h2>
+			<h2>Jhonarendra's Movie</h2>
 			<div>
 				<input type="text" placeholder="Cari">
 			</div>
