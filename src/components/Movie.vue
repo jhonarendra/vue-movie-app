@@ -4,10 +4,10 @@
 		<div class="description">
 			<div class="basic-info">
 				<h3>{{movie.name}}</h3>
-				<span>{{movie.rating}}</span>
-				<p>{{movie.genre}}</p>
-				<p>{{movie.year}}</p>
+				<span :style="{ 'background-color': getRatingColor() }">{{movie.rating}}</span>
 			</div>
+			<p>{{movie.genre}}</p>
+			<p>{{movie.year}}</p>
 		</div>
 	</div>
 </template>
@@ -18,6 +18,15 @@ export default{
 		movie: {
 			type: Object,
 			default: () => {}
+		}
+	},
+	methods:{
+		getRatingColor(){
+			if(this.movie.rating > 7) return "#4CAF50"
+
+			if(this.movie.rating > 4) return "#FFEB3B"
+
+			return "#F44336"
 		}
 	}
 }
