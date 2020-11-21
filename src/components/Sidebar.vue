@@ -1,15 +1,22 @@
 <template>
-	<div id="sidebar">Filters</div>
+	<div id="sidebar">
+		<Filters/>
+		<button>Tambah Movie</button>
+	</div>
 </template>
 
 <script>
-	export default{
-		data(){
-			return {
+import Filters from './Filters'
+export default{
+	components: {
+		Filters
+	},
+	data(){
+		return {
 
-			}
 		}
 	}
+}
 </script>
 
 <style lang='scss' scoped>
