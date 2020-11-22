@@ -11,7 +11,7 @@
 					<h3>{{movie.year}}</h3>
 					<h3>{{movie.genre}}</h3>
 					<h3>
-						<span :style="{ 'background-color': getRatingColor() }">{{movie.rating}}</span>
+						<span :style="{ 'background-color': getRatingColor() }" id="movie-rating">{{movie.rating}}</span>
 					</h3>
 					<h3>Budget: {{movie.budget}}</h3>
 					<h3>Box office: {{movie.boxOffice}}</h3>
@@ -24,10 +24,10 @@
 						{{movie.storyLine}}
 					</h3>
 				</div>
-			</div>
-			<div id="options">
-				<button class="edit">Edit</button>
-				<button class="delete">Delete</button>
+				<div id="options">
+					<button class="edit">Edit</button>
+					<button class="delete">Delete</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -35,7 +35,9 @@
 
 <script>
 import Navbar from '../components/Navbar'
+import ratingMixin from '../mixins/getRatingColor'
 export default{
+	mixins: [ratingMixin],
 	components: {
 		Navbar,
 	},
@@ -48,15 +50,6 @@ export default{
 	data(){
 		return {
 			movie: {}
-		}
-	},
-	methods: {
-		getRatingColor(){
-			if(this.movie.rating > 7) return "#4CAF50"
-
-			if(this.movie.rating > 4) return "#FFEB3B"
-
-			return "#F44336"
 		}
 	},
 	created(){
