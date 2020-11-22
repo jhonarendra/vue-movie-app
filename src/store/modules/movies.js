@@ -32,6 +32,9 @@ const getters = {
 	getMovies: state => {
 		return state.movies.filter(movie => movie.name.toLowerCase().indexOf(state.search.toLowerCase()) > -1)
 		.sort(compare(state.filter))
+	},
+	getMovieById: state => id => {
+		return state.movies.find(movie => movie.id === id)
 	}
 }
 

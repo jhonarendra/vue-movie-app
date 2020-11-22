@@ -1,6 +1,6 @@
 <template>
 	<div class="movie">
-		<img :src="movie.poster">
+		<img :src="movie.poster" @click="openDetails">
 		<div class="description">
 			<div class="basic-info">
 				<h3>{{movie.name}}</h3>
@@ -27,6 +27,9 @@ export default{
 			if(this.movie.rating > 4) return "#FFEB3B"
 
 			return "#F44336"
+		},
+		openDetails(){
+			this.$router.push({name: 'MoviePreview', params: { id: this.movie.id }})
 		}
 	}
 }
