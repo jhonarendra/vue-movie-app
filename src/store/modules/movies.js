@@ -54,8 +54,14 @@ const actions = {
 		commit(SET_FILTER, filter)
 	},
 	addMovie({commit, state}, movie){
-		movie.id = state.movies.length + 1 //increment
-		commit(ADD_MOVIE, movie)
+
+		moviesApi.addMovie(movie)
+		.then(res => commit(ADD_MOVIE, res))
+		.catch(err => console.log(err))
+
+
+		// movie.id = state.movies.length + 1 //increment
+		// commit(ADD_MOVIE, movie)
 	},
 	deleteMovie({commit}, movie){
 		commit(DELETE_MOVIE, movie)
