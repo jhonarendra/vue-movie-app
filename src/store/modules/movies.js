@@ -3,6 +3,8 @@ const SET_SEARCH = "SET_SEARCH"
 const SET_FILTER = "SET_FILTER"
 const ADD_MOVIE = "ADD_MOVIE"
 const DELETE_MOVIE = "DELETE_MOVIE"
+const UPDATE_MOVIE = "UPDATE_MOVIE"
+
 const state = {
 	movies: movieList,
 	search: '',
@@ -25,7 +27,17 @@ const mutations = {
 	[DELETE_MOVIE](state, id){
 		state.movies.splice(state.movies.findIndex(movie => movie.id === id), 1)
 		// splice memang ada di jvascript
-	}
+	},
+	[UPDATE_MOVIE](state, movie){
+		state.movies = state.movies.map(
+			oldMovie => {
+				if(movie.id === oldMovie.id){
+					return movie
+				}
+				return oldMovie
+
+		})
+	},
 }
 
 const actions = {

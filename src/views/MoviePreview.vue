@@ -25,21 +25,108 @@
 					</h3>
 				</div>
 				<div id="options">
-					<button class="edit">Edit</button>
+					<button class="edit" @click="showModal = true">Edit</button>
 					<button class="delete" @click="deleteMovie">Delete</button>
 				</div>
 			</div>
 		</div>
+		<modal v-if="showModal" @close="showModal = false">
+			<template v-slot:header>
+				<h3 class="m-0">Create new movie</h3>
+			</template>
+			<template v-slot:body>
+				<form
+					@submit.prevent="updateMovie"
+					ref="movieForm"
+					id="movie-form"
+				>
+					<p>Fill out the details bellow</p>
+					<input
+						required
+						v-model="movie.name"
+						type="text"
+						placeholder="Name"
+					/>
+					<input
+						required
+						v-model="movie.year"
+						type="number"
+						placeholder="Year"
+					/>
+					<input
+						required
+						v-model="movie.rating"
+						type="number"
+						placeholder="Rating"
+					/>
+					<input
+						required
+						v-model="movie.budget"
+						type="text"
+						placeholder="Budget"
+					/>
+					<input
+						required
+						v-model="movie.poster"
+						type="text"
+						placeholder="Poster"
+					/>
+					<input
+						required
+						v-model="movie.boxOffice"
+						type="text"
+						placeholder="Box Office"
+					/>
+
+					<hr />
+
+					<div>
+						<div id="actor-input">
+							<p class="m-0">Actors</p>
+							<span @click="addActor" class="add-actor">+</span>
+						</div>
+
+						<input
+							required
+							v-for="(actor, index) in movie.actors"
+							:key="index"
+							v-model="movie.actors[index].name"
+							type="text"
+							placeholder="Actor"
+						/>
+					</div>
+
+					<hr />
+
+					<textarea
+						required
+						v-model="movie.storyline"
+						placeholder="Storyline"
+						rows="6"
+					/>
+				</form>
+			</template>
+			<template v-slot:footer>
+				<button
+					id="update-movie"
+					@click="$refs.movieForm.requestSubmit()"
+				>
+					Save
+				</button>
+			</template>
+		</modal>
 	</div>
 </template>
 
 <script>
 import Navbar from '../components/Navbar'
+import Modal from "../components/Modal";
 import ratingMixin from '../mixins/getRatingColor'
 export default{
 	mixins: [ratingMixin],
 	components: {
 		Navbar,
+		Modal,
 	},
 	props: {
 		id: {
@@ -49,10 +136,15 @@ export default{
 	},
 	data(){
 		return {
+			showModal: false,
 			movie: {}
 		}
 	},
 	methods:{
+		updateMovie() {
+			this.$store.dispatch('updateMovie', this.movie);
+			this.showModal = false;
+		},
 		deleteMovie(){
 			this.$store.dispatch('deleteMovie', parseInt(this.id))
 			// manggil method delete movie di store/modules/movie, untuk delete movie dengan id itu
