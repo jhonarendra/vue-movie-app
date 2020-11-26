@@ -26,7 +26,7 @@
 				</div>
 				<div id="options">
 					<button class="edit">Edit</button>
-					<button class="delete">Delete</button>
+					<button class="delete" @click="deleteMovie">Delete</button>
 				</div>
 			</div>
 		</div>
@@ -50,6 +50,13 @@ export default{
 	data(){
 		return {
 			movie: {}
+		}
+	},
+	methods:{
+		deleteMovie(){
+			this.$store.dispatch('deleteMovie', parseInt(this.id))
+			// manggil method delete movie di store/modules/movie, untuk delete movie dengan id itu
+			this.$router.push('/')
 		}
 	},
 	created(){
