@@ -147,9 +147,11 @@ export default{
 			this.showModal = false;
 		},
 		deleteMovie(){
-			this.$store.dispatch('deleteMovie', this.id)
+			this.$store
+			.dispatch('deleteMovie', this.id)
+			.then(res => this.$router.push('/'))
 			// manggil method delete movie di store/modules/movie, untuk delete movie dengan id itu
-			this.$router.push('/')
+			// this.$router.push('/')
 		}
 	},
 	created(){
