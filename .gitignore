@@ -6,6 +6,7 @@ node_modules
 .env.local
 .env.*.local
 /src/services/firebase.js
+/firebase-importer/vue-movie-app-a5e5a-firebase-adminsdk-eiw8y-5652350f7b.json
 
 # Log files
 npm-debug.log*
