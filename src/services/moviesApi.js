@@ -19,8 +19,9 @@ const moviesApi = {
 		return {...form, id}
 
 	},
-	getMovieById: async() => {
-
+	getMovieById: async(id) => {
+		const document = await db.doc(id).get()
+		return {...document.data(), id}
 	},
 	updateMovies: async() => {
 
