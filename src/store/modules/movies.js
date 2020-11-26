@@ -63,6 +63,11 @@ const actions = {
 		// movie.id = state.movies.length + 1 //increment
 		// commit(ADD_MOVIE, movie)
 	},
+	updateMovie({commit}, movie){
+		moviesApi.updateMovie(movie)
+		.then(res => commit(UPDATE_MOVIE, res))
+		.catch(err => console.log(err))
+	},
 	deleteMovie({commit}, movie){
 		commit(DELETE_MOVIE, movie)
 	},
