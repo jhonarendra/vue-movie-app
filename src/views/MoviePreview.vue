@@ -147,23 +147,28 @@ export default{
 			this.showModal = false;
 		},
 		deleteMovie(){
-			this.$store
-			.dispatch('deleteMovie', this.id)
-			.then(res => this.$router.push('/'))
+			this.$store.dispatch('deleteMovie', parseInt(this.id))
+			this.$router.push('/')
+			// firebase
+			// this.$store
+			// .dispatch('deleteMovie', this.id)
+			// .then(res => this.$router.push('/'))
+
 			// manggil method delete movie di store/modules/movie, untuk delete movie dengan id itu
 			// this.$router.push('/')
 		}
 	},
 	created(){
-		const movie = this.$store.getters.getMovieById(parseInt(this.id))
+		this.movie = this.$store.getters.getMovieById(parseInt(this.id))
+		// const movie = this.$store.getters.getMovieById(parseInt(this.id))
 
-		if(movie) {
-			this.movie = movie
-		} else {
-			moviesApi.getMovieById(this.id)
-			.then((res) => {this.movie = res})
-			.catch((err) => console.log(err))
-		}
+		// if(movie) {
+		// 	this.movie = movie
+		// } else {
+		// 	moviesApi.getMovieById(this.id)
+		// 	.then((res) => {this.movie = res})
+		// 	.catch((err) => console.log(err))
+		// }
 	}
 }
 </script>
