@@ -9,7 +9,8 @@ const UPDATE_MOVIE = "UPDATE_MOVIE"
 const SET_MOVIES = "SET_MOVIES"
 
 const state = {
-	movies: [],
+	// movies: [],
+	movies: movieList,
 	search: '',
 	filter: {
 		key: 'rating',
@@ -55,27 +56,30 @@ const actions = {
 	},
 	addMovie({commit, state}, movie){
 
-		moviesApi.addMovie(movie)
-		.then(res => commit(ADD_MOVIE, res))
-		.catch(err => console.log(err))
+		// moviesApi.addMovie(movie)
+		// .then(res => commit(ADD_MOVIE, res))
+		// .catch(err => console.log(err))
 
 
-		// movie.id = state.movies.length + 1 //increment
-		// commit(ADD_MOVIE, movie)
+		movie.id = state.movies.length + 1 //increment
+		commit(ADD_MOVIE, movie)
 	},
 	updateMovie({commit}, movie){
 		moviesApi.updateMovie(movie)
 		.then(res => commit(UPDATE_MOVIE, res))
 		.catch(err => console.log(err))
 	},
-	deleteMovie({commit}, id){
-		moviesApi.deleteMovie(id)
-		.then(res => {
-			commit(DELETE_MOVIE, res)
-			return
-		})
-		.catch(err => console.log(err))
-		// commit(DELETE_MOVIE, movie)
+	// deleteMovie({commit}, id){
+	// 	moviesApi.deleteMovie(id)
+	// 	.then(res => {
+	// 		commit(DELETE_MOVIE, res)
+	// 		return
+	// 	})
+	// 	.catch(err => console.log(err))
+	// 	// commit(DELETE_MOVIE, movie)
+	// },
+	deleteMovie({commit}, movie){
+		commit(DELETE_MOVIE, movie)
 	},
 	fetchMovies({commit}){
 		moviesApi.getMovies()

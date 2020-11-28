@@ -1,6 +1,6 @@
-import firebase from './firebase'
+// import firebase from './firebase'
 
-const db = firebase.firestore().collection('movies')
+// const db = firebase.firestore().collection('movies')
 
 const moviesApi = {
 	getMovies: async() => {
