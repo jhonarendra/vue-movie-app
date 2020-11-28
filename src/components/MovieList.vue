@@ -1,6 +1,5 @@
 <template>
 	<div id="movie-container">
-		Movie List
 		<Movie v-for="movies in movies" :key="movies.id" :movie="movies"/>
 	</div>
 </template>

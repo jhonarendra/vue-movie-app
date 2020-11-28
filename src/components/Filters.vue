@@ -49,6 +49,10 @@
 
 		p {
 			margin-left: 10px;
+			transition: all .2s
+		}
+		p:hover{
+			color: white;
 		}
 	}
 </style>

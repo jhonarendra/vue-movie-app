@@ -1,9 +1,9 @@
 <template>
-	<div id="navbar-wrap" class="card-shadow">
+	<div id="navbar-wrap">
 		<div id="navbar">
 			<h2 @click="$router.push('/')">Jhonarendra's Movie</h2>
 			<div v-if="$route.path == '/'">
-				<input v-model="search" type="text" placeholder="Cari">
+				<input v-model="search" type="text" placeholder="Cari film">
 			</div>
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 			display: flex;
 			padding: 15px;
 			justify-content: space-between;
-			background-color: #a34c01;
+			background-color: #191c1f;
 
 			h2 {
 				margin: 0 1rem 0 0;
@@ -51,10 +51,11 @@
 					width: 20%;
 					border: none;
 					height: 25px;
-					border-radius: 10px;
+					background: transparent;
 					box-sizing: border-box;
 					outline: none;
 					padding: 5px;
+					color:#ccc;
 				}
 			}
 		}
